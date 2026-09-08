@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Create Account — Msomi Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../css/theme.css" />
+<link rel="stylesheet" href="../css/app.css" />
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js" defer></script>
+</head>
+<body>
+<div class="auth-shell">
+  <div class="auth-visual">
+    <a href="../index.html" class="brand" style="color:#fff;position:relative;z-index:1;">
+      <span class="logo-mark" style="background:transparent;"><img src="../photo/logo-icon.png" alt="Msomi Hub logo" /></span>
+      Msomi Hub
+    </a>
+    <div style="position:relative;z-index:1;">
+      <h2 style="color:#fff;font-size:1.9rem;margin-bottom:1rem;max-width:420px;">One account. Your whole semester, organised.</h2>
+      <ul style="display:flex;flex-direction:column;gap:.85rem;color:var(--slate-200);">
+        <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="icon" style="color:var(--gold-400);"></i> Free to register, KES 100/year to unlock everything</li>
+        <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="icon" style="color:var(--gold-400);"></i> Timetable, GPA, budget &amp; reminders in one place</li>
+        <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="icon" style="color:var(--gold-400);"></i> Daily HELB, scholarship &amp; opportunity updates</li>
+      </ul>
+    </div>
+    <div style="position:relative;z-index:1;color:var(--slate-400);font-size:.82rem;">© <span id="year1"></span> Msomi Hub</div>
+  </div>
+
+  <div class="auth-form-side">
+    <div class="auth-card" style="max-width:460px;">
+      <div class="flex justify-between items-center mb-4">
+        <div></div>
+        <button class="icon-btn" id="themeToggle" aria-label="Toggle theme"></button>
+      </div>
+      <h1 style="font-size:1.7rem;margin-bottom:.4rem;">Create your account</h1>
+      <p class="text-secondary mb-4">Takes less than two minutes.</p>
+
+      <div id="referral-banner" class="badge badge-gold mb-4" style="display:none;padding:.6rem 1rem;">
+        <i data-lucide="gift" class="icon"></i> Referred by code <strong data-ref-code style="margin-left:4px;"></strong>
+      </div>
+
+      <form id="register-form">
+        <div class="grid grid-2" style="gap:1rem;">
+          <div class="field" style="grid-column:1/-1;">
+            <label for="name">Full name</label>
+            <div class="input-wrap">
+              <i data-lucide="user" class="icon"></i>
+              <input type="text" id="name" name="name" placeholder="Jane Wanjiru" required />
+            </div>
+          </div>
+          <div class="field" style="grid-column:1/-1;">
+            <label for="email">Email address</label>
+            <div class="input-wrap">
+              <i data-lucide="mail" class="icon"></i>
+              <input type="email" id="email" name="email" placeholder="you@student.ac.ke" required />
+            </div>
+          </div>
+          <div class="field">
+            <label for="university">University</label>
+            <input type="text" id="university" name="university" placeholder="e.g. JKUAT" required />
+          </div>
+          <div class="field">
+            <label for="course">Course</label>
+            <input type="text" id="course" name="course" placeholder="e.g. B.Com" required />
+          </div>
+          <div class="field" style="grid-column:1/-1;">
+            <label for="yearOfStudy">Year of study</label>
+            <select id="yearOfStudy" name="yearOfStudy">
+              <option value="">Select year</option>
+              <option value="1">Year 1</option>
+              <option value="2">Year 2</option>
+              <option value="3">Year 3</option>
+              <option value="4">Year 4</option>
+              <option value="5">Year 5</option>
+            </select>
+          </div>
+          <div class="field" style="grid-column:1/-1;">
+            <label for="password">Password</label>
+            <div class="input-wrap">
+              <i data-lucide="lock" class="icon"></i>
+              <input type="password" id="password" name="password" placeholder="At least 8 characters" required minlength="8" />
+              <button type="button" class="toggle-visibility"><i data-lucide="eye" class="icon"></i></button>
+            </div>
+          </div>
+          <div class="field" style="grid-column:1/-1;">
+            <label for="confirmPassword">Confirm password</label>
+            <div class="input-wrap">
+              <i data-lucide="lock" class="icon"></i>
+              <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Re-enter password" required minlength="8" />
+              <button type="button" class="toggle-visibility"><i data-lucide="eye" class="icon"></i></button>
+            </div>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block btn-lg mt-4">
+          <i data-lucide="user-plus" class="icon"></i> Create Account
+        </button>
+      </form>
+
+      <p class="text-center text-sm mt-6">
+        Already have an account? <a href="login.html" style="color:var(--gold-600);font-weight:700;">Log in</a>
+      </p>
+    </div>
+  </div>
+</div>
+
+<div id="toast-stack"></div>
+<script type="module" src="../js/theme.js"></script>
+<script type="module" src="../js/auth.js"></script>
+<script>document.getElementById('year1').textContent = new Date().getFullYear();</script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Study Timetable — Msomi Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../css/theme.css" />
+<link rel="stylesheet" href="../css/app.css" />
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js" defer></script>
+</head>
+<body>
+<div class="app-shell">
+  <div id="sidebarMount"></div>
+  <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+  <div class="main-col">
+    <div id="topbarMount"></div>
+    <main class="page-content">
+      <div class="page-header">
+        <div><h1>Study Timetable</h1><p>Your weekly class schedule at a glance.</p></div>
+        <button class="btn btn-primary" id="addClassBtn"><i data-lucide="plus" class="icon"></i> Add Class</button>
+      </div>
+
+      <div id="weekGrid" class="grid" style="grid-template-columns: repeat(7, 1fr); gap: .8rem;">
+        <!-- populated by JS -->
+      </div>
+
+      <div class="loading-row" id="loadingRow"><span class="spinner"></span> Loading timetable...</div>
+    </main>
+  </div>
+</div>
+
+<div class="modal-backdrop" id="classModal" style="display:none;">
+  <div class="modal">
+    <div class="modal-header">
+      <h3 id="modalTitle" style="font-size:1.1rem;">Add Class</h3>
+      <button class="icon-btn" id="closeModal"><i data-lucide="x" class="icon"></i></button>
+    </div>
+    <form id="classForm">
+      <div class="modal-body">
+        <input type="hidden" id="classId" />
+        <div class="field">
+          <label for="subject">Subject / Unit</label>
+          <input type="text" id="subject" placeholder="e.g. Principles of Marketing" required />
+        </div>
+        <div class="field">
+          <label for="day_of_week">Day</label>
+          <select id="day_of_week" required>
+            <option value="1">Monday</option>
+            <option value="2">Tuesday</option>
+            <option value="3">Wednesday</option>
+            <option value="4">Thursday</option>
+            <option value="5">Friday</option>
+            <option value="6">Saturday</option>
+            <option value="0">Sunday</option>
+          </select>
+        </div>
+        <div class="grid grid-2" style="gap:1rem;">
+          <div class="field">
+            <label for="start_time">Start time</label>
+            <input type="time" id="start_time" required />
+          </div>
+          <div class="field">
+            <label for="end_time">End time</label>
+            <input type="time" id="end_time" required />
+          </div>
+        </div>
+        <div class="field">
+          <label for="location">Location (optional)</label>
+          <input type="text" id="location" placeholder="e.g. LR 4, Main Campus" />
+        </div>
+        <div class="field">
+          <label for="notes">Notes (optional)</label>
+          <textarea id="notes" placeholder="e.g. Bring calculator"></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-ghost" id="cancelModal">Cancel</button>
+        <button type="submit" class="btn btn-primary" id="saveBtn">Save Class</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div id="toast-stack"></div>
+<script type="module" src="../js/theme.js"></script>
+<script type="module" src="../js/timetable.js"></script>
+</body>
+</html>

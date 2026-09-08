@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Revision Materials — Msomi Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../css/theme.css" />
+<link rel="stylesheet" href="../css/app.css" />
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js" defer></script>
+</head>
+<body>
+<div class="app-shell">
+  <div id="sidebarMount"></div>
+  <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+  <div class="main-col">
+    <div id="topbarMount"></div>
+    <main class="page-content">
+      <div class="page-header">
+        <div><h1>Revision Materials</h1><p>Past papers by school, course, CAT/exam and academic year.</p></div>
+      </div>
+
+      <!-- Loading -->
+      <div id="loadingState" class="loading-row"><span class="spinner"></span> Checking your access...</div>
+
+      <!-- PAYWALL: shown if the student hasn't unlocked this section -->
+      <div id="paywallCard" style="display:none;max-width:460px;">
+        <div class="card card-pad" id="unlockStepPay">
+          <div class="text-center mb-4">
+            <div class="price-tag" style="color:var(--gold-600);"><sup>KES</sup> 50</div>
+            <div class="text-secondary text-sm">One payment · unlocks revision materials for this semester</div>
+          </div>
+          <ul class="price-features mb-4" style="color:var(--text-primary);">
+            <li><i data-lucide="check-circle-2" class="icon" style="color:var(--gold-500);"></i> Past CATs &amp; exams by course</li>
+            <li><i data-lucide="check-circle-2" class="icon" style="color:var(--gold-500);"></i> Searchable by school &amp; academic year</li>
+            <li><i data-lucide="check-circle-2" class="icon" style="color:var(--gold-500);"></i> New papers added regularly</li>
+          </ul>
+          <div class="divider"></div>
+          <form id="unlockForm">
+            <div class="field">
+              <label for="phone">M-Pesa phone number</label>
+              <div class="input-wrap">
+                <i data-lucide="smartphone" class="icon"></i>
+                <input type="tel" id="phone" name="phone" placeholder="07XXXXXXXX" required pattern="0[17][0-9]{8}" />
+              </div>
+              <div class="hint">You'll get an STK push prompt to enter your M-Pesa PIN.</div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block btn-lg">
+              <i data-lucide="zap" class="icon"></i> Pay KES 50 Now
+            </button>
+          </form>
+        </div>
+
+        <div class="card card-pad text-center" id="unlockStepWaiting" style="display:none;">
+          <div class="spinner spinner-lg" style="margin:0 auto 1.5rem;"></div>
+          <h2 style="font-size:1.3rem;margin-bottom:.5rem;">Check your phone</h2>
+          <p class="text-secondary">Enter your M-Pesa PIN to complete the KES 50 payment. This page will update automatically.</p>
+        </div>
+
+        <div class="card card-pad text-center" id="unlockStepSuccess" style="display:none;">
+          <div class="f-icon icon-tint-green" style="margin:0 auto 1rem;"><i data-lucide="check-circle-2" class="icon"></i></div>
+          <h2 style="font-size:1.4rem;margin-bottom:.5rem;">Unlocked!</h2>
+          <p class="text-secondary mb-4">Revision materials are ready for you.</p>
+          <button class="btn btn-primary btn-block" id="afterUnlockBtn">Browse Past Papers</button>
+        </div>
+      </div>
+
+      <!-- UNLOCKED: search + results -->
+      <div id="libraryView" style="display:none;">
+        <div class="card card-pad mb-4">
+          <div class="flex gap-3" style="flex-wrap:wrap;">
+            <div class="input-wrap" style="flex:1;min-width:200px;">
+              <i data-lucide="search" class="icon"></i>
+              <input type="text" id="searchInput" placeholder="Search by course or unit..." />
+            </div>
+            <select id="schoolFilter" style="min-width:170px;"><option value="">All schools</option></select>
+            <select id="typeFilter" style="min-width:130px;">
+              <option value="">CAT or Exam</option>
+              <option value="cat">CAT</option>
+              <option value="exam">Exam</option>
+            </select>
+            <select id="yearFilter" style="min-width:150px;"><option value="">All years</option></select>
+          </div>
+          <div class="hint mt-2" id="expiryHint"></div>
+        </div>
+
+        <div class="grid grid-2" id="paperGrid">
+          <div class="loading-row" style="grid-column:1/-1;"><span class="spinner"></span> Loading papers...</div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<!-- Image gallery viewer -->
+<div class="modal-backdrop" id="galleryModal" style="display:none;">
+  <div class="modal" style="max-width:640px;">
+    <div class="modal-header"><h3 id="galleryTitle" style="font-size:1.05rem;"></h3><button class="icon-btn" id="closeGalleryModal"><i data-lucide="x" class="icon"></i></button></div>
+    <div class="modal-body">
+      <div id="galleryImages" style="display:flex;flex-direction:column;gap:.75rem;"></div>
+    </div>
+  </div>
+</div>
+
+<div id="toast-stack"></div>
+<script type="module" src="../js/theme.js"></script>
+<script type="module" src="../js/pastpapers.js"></script>
+</body>
+</html>

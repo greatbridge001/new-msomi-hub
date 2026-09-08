@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>GPA Calculator — Msomi Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../css/theme.css" />
+<link rel="stylesheet" href="../css/app.css" />
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js" defer></script>
+</head>
+<body>
+<div class="app-shell">
+  <div id="sidebarMount"></div>
+  <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+  <div class="main-col">
+    <div id="topbarMount"></div>
+    <main class="page-content">
+      <div class="page-header">
+        <div><h1>GPA Calculator</h1><p>Log your units each semester and track your cumulative GPA.</p></div>
+        <button class="btn btn-primary" id="addUnitBtn"><i data-lucide="plus" class="icon"></i> Add Unit</button>
+      </div>
+
+      <div class="grid grid-3 mb-4">
+        <div class="card stat-card" style="background:var(--brand-strong);color:#fff;">
+          <div class="stat-icon" style="background:rgba(212,160,23,0.18);color:var(--gold-300);"><i data-lucide="graduation-cap" class="icon"></i></div>
+          <div class="stat-value" id="cgpaValue" style="color:var(--gold-300);">—</div>
+          <div class="stat-label" style="color:var(--slate-300);">Cumulative GPA</div>
+        </div>
+        <div class="card stat-card">
+          <div class="stat-icon icon-tint-navy"><i data-lucide="book-marked" class="icon"></i></div>
+          <div class="stat-value" id="unitsCount">—</div>
+          <div class="stat-label">Units recorded</div>
+        </div>
+        <div class="card stat-card">
+          <div class="stat-icon icon-tint-green"><i data-lucide="layers" class="icon"></i></div>
+          <div class="stat-value" id="semCount">—</div>
+          <div class="stat-label">Semesters tracked</div>
+        </div>
+      </div>
+
+      <div class="card card-pad mb-4">
+        <h3 style="font-size:1.05rem;margin-bottom:1rem;">GPA per Semester</h3>
+        <div id="semesterBars"><div class="loading-row"><span class="spinner"></span> Loading...</div></div>
+      </div>
+
+      <div class="card card-pad">
+        <h3 style="font-size:1.05rem;margin-bottom:1rem;">All Units</h3>
+        <div class="table-wrap">
+          <table class="data-table" id="unitsTable">
+            <thead><tr><th>Semester</th><th>Unit</th><th>Grade</th><th>Credit Hours</th><th></th></tr></thead>
+            <tbody id="unitsTbody"><tr><td colspan="5"><div class="loading-row"><span class="spinner"></span> Loading...</div></td></tr></tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<div class="modal-backdrop" id="unitModal" style="display:none;">
+  <div class="modal">
+    <div class="modal-header">
+      <h3 id="modalTitle" style="font-size:1.1rem;">Add Unit</h3>
+      <button class="icon-btn" id="closeModal"><i data-lucide="x" class="icon"></i></button>
+    </div>
+    <form id="unitForm">
+      <div class="modal-body">
+        <input type="hidden" id="unitId" />
+        <div class="field">
+          <label for="semester">Semester</label>
+          <input type="text" id="semester" placeholder="e.g. Year 2 Semester 1" required />
+        </div>
+        <div class="field">
+          <label for="unit_name">Unit name</label>
+          <input type="text" id="unit_name" placeholder="e.g. Business Statistics" required />
+        </div>
+        <div class="grid grid-2" style="gap:1rem;">
+          <div class="field">
+            <label for="grade">Grade</label>
+            <select id="grade" required>
+              <option value="A">A</option><option value="A-">A-</option>
+              <option value="B+">B+</option><option value="B">B</option><option value="B-">B-</option>
+              <option value="C+">C+</option><option value="C">C</option><option value="C-">C-</option>
+              <option value="D">D</option><option value="E">E</option><option value="F">F</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="credit_hours">Credit hours</label>
+            <input type="number" id="credit_hours" min="1" max="12" value="3" required />
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-ghost" id="cancelModal">Cancel</button>
+        <button type="submit" class="btn btn-primary" id="saveBtn">Save Unit</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div id="toast-stack"></div>
+<script type="module" src="../js/theme.js"></script>
+<script type="module" src="../js/gpa.js"></script>
+</body>
+</html>

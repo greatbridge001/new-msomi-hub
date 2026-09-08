@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Msomi Hub — Your Daily Student Success Companion</title>
+<meta name="description" content="Msomi Hub helps Kenyan university students manage timetables, GPA, budgets, HELB updates, opportunities and more — all in one beautifully simple place." />
+<link rel="manifest" href="manifest.json" />
+<meta name="theme-color" content="#0d0d0d" />
+<link rel="icon" type="image/png" href="photo/logo-icon.png" />
+<link rel="apple-touch-icon" href="photo/logo-icon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/theme.css" />
+<link rel="stylesheet" href="css/app.css" />
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js" defer></script>
+</head>
+<body>
+<div id="splashScreen" class="splash-screen" aria-hidden="true">
+  <img src="photo/logo-icon.png" alt="" class="splash-logo" />
+</div>
+
+<nav class="navbar" id="navbar">
+  <div class="container navbar-inner">
+    <a href="index.html" class="brand">
+      <span class="logo-mark"><img src="photo/logo-icon.png" alt="Msomi Hub logo" /></span>
+      Msomi Hub
+    </a>
+    <div class="nav-links">
+      <a href="#features">Features</a>
+      <a href="#how-it-works">How it works</a>
+      <a href="#testimonials">Stories</a>
+    </div>
+    <div class="nav-cta">
+      <button class="icon-btn" id="themeToggle" aria-label="Toggle theme"></button>
+      <button class="btn btn-outline btn-sm" data-coffee-trigger style="color:var(--gold-600);border-color:var(--gold-400);"><i data-lucide="coffee" class="icon"></i> Buy Me a Coffee</button>
+      <a href="pages/login.html" class="btn btn-outline btn-sm">Log In</a>
+      <a href="pages/register.html" class="btn btn-primary btn-sm">Get Started</a>
+      <button class="icon-btn mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu"><i data-lucide="menu" class="icon"></i></button>
+    </div>
+  </div>
+</nav>
+
+<div id="mobileNav" style="display:none; position:fixed; inset:0; z-index:120; background:var(--bg-page); padding:var(--space-6);">
+  <div class="flex justify-between items-center mb-4">
+    <span class="brand"><span class="logo-mark"><img src="photo/logo-icon.png" alt="Msomi Hub logo" /></span>Msomi Hub</span>
+    <button class="icon-btn" id="closeMobileNav"><i data-lucide="x" class="icon"></i></button>
+  </div>
+  <div class="flex flex-col gap-4" style="font-size:1.2rem;font-weight:600;">
+    <a href="#features">Features</a>
+    <a href="#how-it-works">How it works</a>
+    <a href="#testimonials">Stories</a>
+    <div class="divider"></div>
+    <button class="btn btn-outline btn-block" data-coffee-trigger style="color:var(--gold-600);border-color:var(--gold-400);"><i data-lucide="coffee" class="icon"></i> Buy Me a Coffee</button>
+    <a href="pages/login.html" class="btn btn-outline btn-block">Log In</a>
+    <a href="pages/register.html" class="btn btn-primary btn-block">Get Started Free</a>
+  </div>
+</div>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-blob b1"></div>
+  <div class="hero-blob b2"></div>
+  <div class="container hero-grid">
+    <div class="reveal in-view">
+      <span class="hero-eyebrow"><i data-lucide="sparkles" class="icon"></i> Built for Kenyan university students</span>
+      <h1>Everything a student needs to <span class="accent-text">stay ahead</span>, in one daily hub.</h1>
+      <p class="lead">Msomi Hub brings your timetable, GPA, budget, HELB &amp; scholarship updates, internships and daily motivation together — so you never miss what matters, one login at a time.</p>
+      <div class="hero-actions">
+        <a href="pages/register.html" class="btn btn-primary btn-lg">
+          <i data-lucide="rocket" class="icon"></i> Create Free Account
+        </a>
+        <a href="#features" class="btn btn-outline btn-lg">
+          <i data-lucide="play-circle" class="icon"></i> See what's inside
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat"><div class="num" data-count="4300">0</div><div class="label">Students onboard</div></div>
+        <div class="hero-stat"><div class="num" data-count="120">0</div><div class="label">Universities &amp; colleges</div></div>
+        <div class="hero-stat"><div class="num" data-count="98">0</div><div class="label">% renewal satisfaction</div></div>
+      </div>
+    </div>
+    <div class="hero-visual reveal in-view">
+      <div class="hero-photo-main">
+        <img src="photo/campus.jpeg" alt="Kenyan university students studying together on campus" />
+      </div>
+      <div class="floating-card fc1">
+        <div class="fc-icon icon-tint-green"><i data-lucide="wallet" class="icon"></i></div>
+        <div><div class="fc-title">Budget on track</div><div class="fc-sub">KES 4,200 left this month</div></div>
+      </div>
+      <div class="floating-card fc2">
+        <div class="fc-icon icon-tint-gold"><i data-lucide="bell-ring" class="icon"></i></div>
+        <div><div class="fc-title">CAT in 2 days</div><div class="fc-sub">Financial Accounting II</div></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- LOGO / TRUST STRIP -->
+<div class="container">
+  <div class="card card-pad reveal" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
+    <span class="text-secondary text-sm" style="font-weight:600;">Trusted by students paying their own way through:</span>
+    <div class="flex gap-4" style="flex-wrap:wrap;color:var(--text-muted);font-weight:700;font-size:.85rem;">
+      <span>HELB Loans</span><span>·</span><span>County Bursaries</span><span>·</span><span>Scholarships</span><span>·</span><span>Self-Sponsorship</span>
+    </div>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<section class="section" id="features">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Everything in one place</span>
+      <h2>A full student toolkit, not just another app</h2>
+      <p>Built around what you actually check daily — from money and marks to opportunities and motivation.</p>
+    </div>
+    <div class="grid grid-3">
+      <div class="card feature-card card-hover reveal">
+        <div class="f-icon icon-tint-navy"><i data-lucide="calendar-clock" class="icon"></i></div>
+        <h3>Smart Study Timetable</h3>
+        <p>Build your weekly class schedule and see exactly what's next, right on your dashboard every morning.</p>
+      </div>
+      <div class="card feature-card card-hover reveal">
+        <div class="f-icon icon-tint-gold"><i data-lucide="bell-ring" class="icon"></i></div>
+        <h3>CAT &amp; Exam Reminders</h3>
+        <p>Never walk into a CAT unprepared. Set reminders for assignments, CATs and exams with countdowns.</p>
+      </div>
+      <div class="card feature-card card-hover reveal">
+        <div class="f-icon icon-tint-green"><i data-lucide="graduation-cap" class="icon"></i></div>
+        <h3>GPA Calculator</h3>
+        <p>Log your units and grades each semester and watch your cumulative GPA calculate itself automatically.</p>
+      </div>
+      <div class="card feature-card card-hover reveal">
+        <div class="f-icon icon-tint-navy"><i data-lucide="wallet" class="icon"></i></div>
+        <h3>Campus Budget Tracker</h3>
+        <p>Track HELB disbursements, allowance, and spending by category so your money lasts the full semester.</p>
+      </div>
+      <div class="card feature-card card-hover reveal">
+        <div class="f-icon icon-tint-gold"><i data-lucide="landmark" class="icon"></i></div>
+        <h3>HELB &amp; Funding Updates</h3>
+        <p>Curated, up-to-date HELB, scholarship and bursary updates — no more digging through confusing portals.</p>
+      </div>
+      <div class="card feature-card card-hover reveal">
+        <div class="f-icon icon-tint-green"><i data-lucide="briefcase" class="icon"></i></div>
+        <h3>Internships &amp; Opportunities</h3>
+        <p>Attachments, graduate trainee programmes, online gigs and competitions, updated regularly by our team.</p>
+      </div>
+      <div class="card feature-card card-hover reveal">
+        <div class="f-icon icon-tint-navy"><i data-lucide="sparkles" class="icon"></i></div>
+        <h3>Student Toolkit</h3>
+        <p>One-tap links to ChatGPT for studying, Pinterest for inspo, Canva, Grammarly and other tools you already use.</p>
+      </div>
+      <div class="card feature-card card-hover reveal">
+        <div class="f-icon icon-tint-gold"><i data-lucide="bookmark" class="icon"></i></div>
+        <h3>Save for Later</h3>
+        <p>Bookmark any announcement, HELB update or opportunity so it's easy to find again when you need it.</p>
+      </div>
+      <div class="card feature-card card-hover reveal">
+        <div class="f-icon icon-tint-green"><i data-lucide="heart-handshake" class="icon"></i></div>
+        <h3>Daily Motivation</h3>
+        <p>A fresh scripture and motivational quote every day to keep discipline and faith part of your routine.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section" id="how-it-works" style="background:var(--bg-surface-alt);">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Simple to start</span>
+      <h2>Get set up in under two minutes</h2>
+      <p>No complicated onboarding, no fees. Register and your whole student life is organised.</p>
+    </div>
+    <div class="steps-row reveal">
+      <div class="step-item">
+        <div class="step-num">1</div>
+        <h4>Create your account</h4>
+        <p>Sign up free with your name, university and course in seconds.</p>
+      </div>
+      <div class="step-item">
+        <div class="step-num">2</div>
+        <h4>Set up your basics</h4>
+        <p>Add your timetable, units and budget — it only takes a few minutes.</p>
+      </div>
+      <div class="step-item">
+        <div class="step-num">3</div>
+        <h4>Check in daily</h4>
+        <p>Your dashboard keeps you on top of deadlines, money, and opportunities.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section" id="testimonials" style="background:var(--bg-surface-alt);">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Loved by students</span>
+      <h2>What students are saying</h2>
+    </div>
+    <div class="grid grid-3">
+      <div class="card testimonial-card reveal">
+        <div class="stars"><i data-lucide="star" class="icon"></i><i data-lucide="star" class="icon"></i><i data-lucide="star" class="icon"></i><i data-lucide="star" class="icon"></i><i data-lucide="star" class="icon"></i></div>
+        <p class="quote">"I used to forget CAT dates constantly. Now my dashboard reminds me days ahead. Genuinely changed my semester."</p>
+        <div class="testimonial-author"><div class="avatar">FN</div><div><div class="name">Faith N.</div><div class="role">Egerton University</div></div></div>
+      </div>
+      <div class="card testimonial-card reveal">
+        <div class="stars"><i data-lucide="star" class="icon"></i><i data-lucide="star" class="icon"></i><i data-lucide="star" class="icon"></i><i data-lucide="star" class="icon"></i><i data-lucide="star" class="icon"></i></div>
+        <p class="quote">"The budget tracker keeps my HELB money lasting the whole semester instead of running out by week six."</p>
+        <div class="testimonial-author"><div class="avatar">BK</div><div><div class="name">Brian K.</div><div class="role">JKUAT</div></div></div>
+      </div>
+      <div class="card testimonial-card reveal">
+        <div class="stars"><i data-lucide="star" class="icon"></i><i data-lucide="star" class="icon"></i><i data-lucide="star" class="icon"></i><i data-lucide="star" class="icon"></i><i data-lucide="star" class="icon"></i></div>
+        <p class="quote">"Everything I need is free and it's genuinely made me more organised this semester."</p>
+        <div class="testimonial-author"><div class="avatar">AW</div><div><div class="name">Amina W.</div><div class="role">University of Nairobi</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section">
+  <div class="container">
+    <div class="cta-band reveal">
+      <h2>Ready to take control of your semester?</h2>
+      <p>Join thousands of students already using Msomi Hub to stay organised, funded and motivated.</p>
+      <a href="pages/register.html" class="btn btn-primary btn-lg">
+        <i data-lucide="rocket" class="icon"></i> Create Your Free Account
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="index.html" class="brand" style="color:#fff;margin-bottom:1rem;">
+          <span class="logo-mark"><img src="photo/logo-icon.png" alt="Msomi Hub logo" /></span> Msomi Hub
+        </a>
+        <p style="font-size:.88rem;color:var(--slate-400);max-width:280px;margin-bottom:1.2rem;">
+          The daily companion for Kenyan university students — timetables, money, marks and opportunities in one home.
+        </p>
+        <div class="social-row">
+          <a href="https://twitter.com" target="_blank" rel="noopener" aria-label="Twitter/X"><i data-lucide="twitter" class="icon"></i></a>
+          <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram"><i data-lucide="instagram" class="icon"></i></a>
+          <a href="https://wa.me/254700000000" target="_blank" rel="noopener" aria-label="WhatsApp"><i data-lucide="message-circle" class="icon"></i></a>
+        </div>
+      </div>
+      <div>
+        <h5>Product</h5>
+        <a href="#features">Features</a>
+          <a href="#how-it-works">How it works</a>
+      </div>
+      <div>
+        <h5>Account</h5>
+        <a href="pages/login.html">Log In</a>
+        <a href="pages/register.html">Register</a>
+        <a href="pages/forgot-password.html">Reset Password</a>
+      </div>
+      <div>
+        <h5>Support</h5>
+        <a href="https://wa.me/254700000000" target="_blank" rel="noopener">WhatsApp Support</a>
+        <a href="mailto:hello@msomihub.co.ke">hello@msomihub.co.ke</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> Msomi Hub. All rights reserved.</span>
+      <span>Made with care, for Kenyan students.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Brief spin of the logo while the site opens, then fade to reveal the page.
+  (function () {
+    var splash = document.getElementById('splashScreen');
+    if (!splash) return;
+    var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var delay = reduceMotion ? 0 : 2300;
+    function dismiss() {
+      splash.classList.add('hide');
+      setTimeout(function () { splash.remove(); }, 550);
+    }
+    if (document.readyState === 'complete') {
+      setTimeout(dismiss, delay);
+    } else {
+      window.addEventListener('load', function () { setTimeout(dismiss, delay); });
+    }
+  })();
+</script>
+<script type="module" src="js/theme.js"></script>
+<script type="module" src="js/main.js"></script>
+</body>
+</html>

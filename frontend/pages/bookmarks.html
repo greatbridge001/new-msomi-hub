@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Saved Items — Msomi Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../css/theme.css" />
+<link rel="stylesheet" href="../css/app.css" />
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js" defer></script>
+</head>
+<body>
+<div class="app-shell">
+  <div id="sidebarMount"></div>
+  <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+  <div class="main-col">
+    <div id="topbarMount"></div>
+    <main class="page-content">
+      <div class="page-header">
+        <div><h1>Saved Items</h1><p>Announcements, HELB updates and opportunities you've bookmarked.</p></div>
+      </div>
+
+      <div class="flex gap-2 mb-4" id="filterTabs" style="flex-wrap:wrap;">
+        <button class="btn btn-dark btn-sm" data-type="">All</button>
+        <button class="btn btn-outline btn-sm" data-type="announcement">Announcements</button>
+        <button class="btn btn-outline btn-sm" data-type="helb_update">HELB</button>
+        <button class="btn btn-outline btn-sm" data-type="opportunity">Opportunities</button>
+      </div>
+
+      <div class="flex flex-col gap-3" id="savedList">
+        <div class="loading-row"><span class="spinner"></span> Loading saved items...</div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<div id="toast-stack"></div>
+<script type="module" src="../js/theme.js"></script>
+<script type="module" src="../js/bookmarks.js"></script>
+</body>
+</html>

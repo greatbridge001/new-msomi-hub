@@ -1,0 +1,135 @@
+/* ==========================================================================
+   Msomi Hub — Design Tokens
+   A professional student-services platform for Kenyan university students.
+   ========================================================================== */
+
+:root {
+  /* Brand palette — black, white, and one confident yellow accent */
+  --black-950: #0d0d0d;
+  --black-900: #171717;
+  --black-800: #262626;
+  --black-700: #3d3d3d;
+  --black-600: #595959;
+  --black-500: #787878;
+
+  /* Kept for backward compatibility with existing markup/JS class names
+     (icon-tint-navy, badge-navy, --navy-*) — mapped onto the same
+     black family so nothing reads as a separate hue. */
+  --navy-950: var(--black-950);
+  --navy-900: var(--black-900);
+  --navy-800: var(--black-800);
+  --navy-700: var(--black-700);
+  --navy-600: var(--black-600);
+  --navy-500: var(--black-500);
+
+  /* Yellow — vivid for fills/buttons/badges, deep for text-on-white use */
+  --yellow-600: #8a6300;
+  --yellow-500: #f7c600;
+  --yellow-400: #ffd633;
+  --yellow-300: #ffe480;
+  --yellow-100: #fff8e0;
+
+  /* Kept for backward compatibility with existing markup/JS class names
+     (icon-tint-gold, badge-gold, --gold-*) */
+  --gold-600: var(--yellow-600);
+  --gold-500: var(--yellow-500);
+  --gold-400: var(--yellow-400);
+  --gold-300: var(--yellow-300);
+  --gold-100: var(--yellow-100);
+
+  --emerald-600: #0d9155;
+  --emerald-500: #16a34a;
+  --emerald-100: #dcfce7;
+
+  --rose-600: #c0304a;
+  --rose-500: #e0405d;
+  --rose-100: #fde3e8;
+
+  --slate-950: #101010;
+  --slate-900: #181818;
+  --slate-800: #262626;
+  --slate-700: #404040;
+  --slate-600: #5c5c5c;
+  --slate-500: #7a7a7a;
+  --slate-400: #a3a3a3;
+  --slate-300: #d4d4d4;
+  --slate-200: #e8e8e8;
+  --slate-100: #f4f4f4;
+  --slate-50: #fafafa;
+  --white: #ffffff;
+
+  /* Semantic mapping (light mode default) */
+  --bg-page: var(--slate-50);
+  --bg-surface: var(--white);
+  --bg-surface-alt: var(--slate-100);
+  --bg-inverse: var(--black-900);
+  --text-primary: var(--slate-900);
+  --text-secondary: var(--slate-600);
+  --text-muted: var(--slate-400);
+  --text-inverse: var(--white);
+  --border-subtle: var(--slate-200);
+  --border-strong: var(--slate-300);
+
+  --accent: var(--yellow-500);
+  --accent-strong: var(--yellow-600);
+  --accent-contrast: var(--black-950);
+  --brand: var(--black-800);
+  --brand-strong: var(--black-900);
+  --success: var(--emerald-500);
+  --danger: var(--rose-500);
+
+  /* Typography — one steady, professional typeface used site-wide */
+  --font-display: 'Inter', 'Segoe UI', Arial, sans-serif;
+  --font-body: 'Inter', 'Segoe UI', Arial, sans-serif;
+
+  /* Spacing scale */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 2.5rem;
+  --space-8: 3rem;
+  --space-9: 4rem;
+  --space-10: 5rem;
+
+  /* Radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 22px;
+  --radius-full: 999px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.07), 0 1px 1px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 8px 24px -8px rgba(0, 0, 0, 0.16), 0 2px 8px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 20px 45px -12px rgba(0, 0, 0, 0.2), 0 6px 16px rgba(0, 0, 0, 0.07);
+  --shadow-accent: 0 10px 24px -8px rgba(247, 198, 0, 0.4);
+  --shadow-navy: 0 16px 36px -14px rgba(13, 13, 13, 0.45);
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --dur-fast: 150ms;
+  --dur-med: 280ms;
+  --dur-slow: 500ms;
+
+  --topbar-h: 72px;
+  --sidebar-w: 260px;
+}
+
+[data-theme='dark'] {
+  --bg-page: var(--slate-950);
+  --bg-surface: var(--black-900);
+  --bg-surface-alt: var(--black-800);
+  --bg-inverse: var(--slate-50);
+  --text-primary: var(--slate-50);
+  --text-secondary: var(--slate-300);
+  --text-muted: var(--slate-400);
+  --text-inverse: var(--black-950);
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.16);
+  --shadow-md: 0 8px 24px -8px rgba(0, 0, 0, 0.5), 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 20px 45px -12px rgba(0, 0, 0, 0.6);
+}

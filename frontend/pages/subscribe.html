@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Subscribe — Msomi Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../css/theme.css" />
+<link rel="stylesheet" href="../css/app.css" />
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js" defer></script>
+</head>
+<body style="background:var(--bg-page);">
+<div class="container-narrow" style="min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem 1.2rem;">
+
+  <a href="dashboard.html" class="brand mb-6" style="margin-bottom:2rem;">
+    <span class="logo-mark"><img src="../photo/logo-icon.png" alt="Msomi Hub logo" /></span> Msomi Hub
+  </a>
+
+  <!-- Already active -->
+  <div id="already-active" class="card card-pad text-center" style="display:none;max-width:440px;width:100%;">
+    <div class="f-icon icon-tint-green" style="margin:0 auto 1rem;"><i data-lucide="check-circle-2" class="icon"></i></div>
+    <h2 style="font-size:1.4rem;margin-bottom:.5rem;">You're already subscribed!</h2>
+    <p class="text-secondary mb-4">Your access is active until <strong id="expiry-date"></strong>.</p>
+    <a href="dashboard.html" class="btn btn-primary btn-block">Go to Dashboard</a>
+  </div>
+
+  <div id="pay-flow" style="max-width:440px;width:100%;">
+    <!-- Step: phone entry -->
+    <div id="step-phone" class="card card-pad">
+      <div class="text-center mb-4">
+        <div class="price-tag" style="color:var(--gold-600);"><sup>KES</sup> 100</div>
+        <div class="text-secondary text-sm">One payment · unlocks everything for the academic year</div>
+      </div>
+      <ul class="price-features mb-4" style="color:var(--text-primary);">
+        <li><i data-lucide="check-circle-2" class="icon" style="color:var(--gold-500);"></i> Timetable, GPA &amp; budget tools</li>
+        <li><i data-lucide="check-circle-2" class="icon" style="color:var(--gold-500);"></i> CAT &amp; exam reminders</li>
+        <li><i data-lucide="check-circle-2" class="icon" style="color:var(--gold-500);"></i> HELB, scholarships &amp; opportunities</li>
+      </ul>
+      <div class="divider"></div>
+      <form id="pay-form">
+        <div class="field">
+          <label for="phone">M-Pesa phone number</label>
+          <div class="input-wrap">
+            <i data-lucide="smartphone" class="icon"></i>
+            <input type="tel" id="phone" name="phone" placeholder="07XXXXXXXX" required pattern="0[17][0-9]{8}" />
+          </div>
+          <div class="hint">You'll get an STK push prompt to enter your M-Pesa PIN.</div>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block btn-lg">
+          <i data-lucide="zap" class="icon"></i> Pay KES 100 Now
+        </button>
+      </form>
+    </div>
+
+    <!-- Step: waiting for STK push -->
+    <div id="step-waiting" class="card card-pad text-center" style="display:none;">
+      <div class="spinner spinner-lg" style="margin:0 auto 1.5rem;"></div>
+      <h2 style="font-size:1.3rem;margin-bottom:.5rem;">Check your phone</h2>
+      <p class="text-secondary">Enter your M-Pesa PIN to complete the KES 100 payment. This page will update automatically.</p>
+    </div>
+
+    <!-- Step: success -->
+    <div id="step-success" class="card card-pad text-center" style="display:none;">
+      <div class="f-icon icon-tint-green" style="margin:0 auto 1rem;width:64px;height:64px;"><i data-lucide="party-popper" class="icon"></i></div>
+      <h2 style="font-size:1.4rem;margin-bottom:.5rem;">Payment successful!</h2>
+      <p class="text-secondary mb-4">Your Msomi Hub access is now active for the full academic year.</p>
+      <a href="dashboard.html" class="btn btn-primary btn-block btn-lg">Go to Dashboard</a>
+    </div>
+  </div>
+
+</div>
+
+<div id="toast-stack"></div>
+<script type="module" src="../js/theme.js"></script>
+<script type="module" src="../js/subscribe.js"></script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Profile & Referrals — Msomi Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../css/theme.css" />
+<link rel="stylesheet" href="../css/app.css" />
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js" defer></script>
+</head>
+<body>
+<div class="app-shell">
+  <div id="sidebarMount"></div>
+  <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+  <div class="main-col">
+    <div id="topbarMount"></div>
+    <main class="page-content">
+      <div class="page-header">
+        <div><h1>Profile &amp; Referrals</h1><p>Manage your details and invite classmates.</p></div>
+      </div>
+
+      <div class="grid grid-sidebar">
+        <div class="flex flex-col gap-4">
+          <div class="card card-pad">
+            <div class="flex items-center gap-4 mb-4">
+              <div class="avatar-upload-wrap" id="avatarUploadWrap" title="Change profile picture">
+                <span id="profileAvatarSlot"><div class="avatar avatar-lg">--</div></span>
+                <div class="avatar-upload-overlay"><i data-lucide="camera" class="icon"></i></div>
+                <input type="file" id="avatarInput" accept="image/png,image/jpeg,image/webp" hidden />
+              </div>
+              <div>
+                <h3 id="profileName" style="font-size:1.15rem;">Loading...</h3>
+                <p class="text-secondary text-sm" id="profileEmail"></p>
+                <button type="button" class="btn btn-outline btn-sm mt-2" id="changePhotoBtn"><i data-lucide="image-plus" class="icon"></i> Change photo</button>
+              </div>
+            </div>
+            <p class="text-sm text-secondary" id="profileBioDisplay" style="display:none;border-left:3px solid var(--gold-400);padding-left:.75rem;margin-bottom:1.25rem;line-height:1.5;"></p>
+            <form id="profileForm">
+              <div class="grid grid-2" style="gap:1rem;">
+                <div class="field" style="grid-column:1/-1;">
+                  <label for="name">Full name</label>
+                  <input type="text" id="name" required />
+                </div>
+                <div class="field">
+                  <label for="university">University</label>
+                  <input type="text" id="university" />
+                </div>
+                <div class="field">
+                  <label for="course">Course</label>
+                  <input type="text" id="course" />
+                </div>
+                <div class="field" style="grid-column:1/-1;">
+                  <label for="yearOfStudy">Year of study</label>
+                  <select id="yearOfStudy">
+                    <option value="">Select year</option>
+                    <option value="1">Year 1</option>
+                    <option value="2">Year 2</option>
+                    <option value="3">Year 3</option>
+                    <option value="4">Year 4</option>
+                    <option value="5">Year 5</option>
+                  </select>
+                </div>
+                <div class="field" style="grid-column:1/-1;">
+                  <label for="bio">Bio <span class="text-muted" style="font-weight:400;">(shown on your profile, max 280 characters)</span></label>
+                  <textarea id="bio" rows="3" maxlength="280" placeholder="Tell classmates a bit about yourself..."></textarea>
+                  <span class="text-sm text-muted" id="bioCount" style="align-self:flex-end;">0 / 280</span>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary mt-4" id="saveProfileBtn"><i data-lucide="save" class="icon"></i> Save Changes</button>
+            </form>
+          </div>
+        </div>
+
+        <div class="flex flex-col gap-4">
+          <div class="card card-pad" style="background:var(--brand-strong);color:#fff;">
+            <div class="flex items-center gap-2 mb-3"><i data-lucide="gift" class="icon" style="color:var(--gold-300);"></i><strong>Invite &amp; Earn Recognition</strong></div>
+            <p class="text-sm" style="color:var(--slate-300);line-height:1.5;">Share your link — classmates who register through it are credited to you.</p>
+            <div class="flex gap-2 mt-4">
+              <input type="text" id="referralLink" readonly style="background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.16);color:#fff;font-size:.8rem;" />
+              <button class="btn btn-primary btn-icon" id="copyRefBtn"><i data-lucide="copy" class="icon"></i></button>
+            </div>
+            <div class="flex items-center gap-2 mt-4" style="color:var(--gold-300);">
+              <i data-lucide="users" class="icon"></i>
+              <span class="text-sm" id="referredCount">0 students referred</span>
+            </div>
+          </div>
+
+          <div class="card card-pad">
+            <h3 style="font-size:1rem;margin-bottom:1rem;">Subscription</h3>
+            <div id="subStatusBox" class="loading-row"><span class="spinner"></span> Checking...</div>
+          </div>
+
+          <div class="card card-pad">
+            <h3 style="font-size:1rem;margin-bottom:1rem;color:var(--rose-600);">Danger Zone</h3>
+            <p class="text-sm text-secondary mb-3">Log out of Msomi Hub on this device.</p>
+            <button class="btn btn-danger btn-block" id="logoutBtn2"><i data-lucide="log-out" class="icon"></i> Log Out</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<div id="toast-stack"></div>
+<script type="module" src="../js/theme.js"></script>
+<script type="module" src="../js/profile.js"></script>
+</body>
+</html>

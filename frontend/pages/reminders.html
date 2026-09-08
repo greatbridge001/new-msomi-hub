@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CAT & Exam Reminders — Msomi Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../css/theme.css" />
+<link rel="stylesheet" href="../css/app.css" />
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js" defer></script>
+</head>
+<body>
+<div class="app-shell">
+  <div id="sidebarMount"></div>
+  <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+  <div class="main-col">
+    <div id="topbarMount"></div>
+    <main class="page-content">
+      <div class="page-header">
+        <div>
+          <h1>CAT &amp; Exam Reminders</h1>
+          <p>Never miss a deadline again.</p>
+        </div>
+        <button class="btn btn-primary" id="addReminderBtn"><i data-lucide="plus" class="icon"></i> Add Reminder</button>
+      </div>
+
+      <div class="flex gap-2 mb-4" id="filterTabs" style="flex-wrap:wrap;">
+        <button class="btn btn-dark btn-sm" data-filter="upcoming">Upcoming</button>
+        <button class="btn btn-outline btn-sm" data-filter="all">All</button>
+        <button class="btn btn-outline btn-sm" data-filter="completed">Completed</button>
+      </div>
+
+      <div class="card card-pad">
+        <div id="remindersList"><div class="loading-row"><span class="spinner"></span> Loading reminders...</div></div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<!-- Add/Edit modal -->
+<div class="modal-backdrop" id="reminderModal" style="display:none;">
+  <div class="modal">
+    <div class="modal-header">
+      <h3 id="modalTitle" style="font-size:1.1rem;">Add Reminder</h3>
+      <button class="icon-btn" id="closeModal"><i data-lucide="x" class="icon"></i></button>
+    </div>
+    <form id="reminderForm">
+      <div class="modal-body">
+        <input type="hidden" id="reminderId" />
+        <div class="field">
+          <label for="title">Title</label>
+          <input type="text" id="title" placeholder="e.g. Financial Accounting II CAT" required />
+        </div>
+        <div class="field">
+          <label for="subject">Subject / Unit</label>
+          <input type="text" id="subject" placeholder="e.g. BBM 204" />
+        </div>
+        <div class="grid grid-2" style="gap:1rem;">
+          <div class="field">
+            <label for="reminder_type">Type</label>
+            <select id="reminder_type">
+              <option value="cat">CAT</option>
+              <option value="assignment">Assignment</option>
+              <option value="exam">Exam</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="due_date">Due date &amp; time</label>
+            <input type="datetime-local" id="due_date" required />
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-ghost" id="cancelModal">Cancel</button>
+        <button type="submit" class="btn btn-primary" id="saveReminderBtn">Save Reminder</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div id="toast-stack"></div>
+<script type="module" src="../js/theme.js"></script>
+<script type="module" src="../js/reminders.js"></script>
+</body>
+</html>

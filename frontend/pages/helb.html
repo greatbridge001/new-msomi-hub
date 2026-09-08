@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>HELB & Funding — Msomi Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../css/theme.css" />
+<link rel="stylesheet" href="../css/app.css" />
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js" defer></script>
+</head>
+<body>
+<div class="app-shell">
+  <div id="sidebarMount"></div>
+  <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+  <div class="main-col">
+    <div id="topbarMount"></div>
+    <main class="page-content">
+      <div class="page-header">
+        <div><h1>HELB &amp; Funding</h1><p>Loans, scholarships and bursaries — kept current by our team.</p></div>
+      </div>
+
+      <div class="card card-pad mb-4">
+        <div class="flex gap-3" style="flex-wrap:wrap;">
+          <div class="input-wrap" style="flex:1;min-width:220px;">
+            <i data-lucide="search" class="icon"></i>
+            <input type="text" id="searchInput" placeholder="Search HELB, scholarships, bursaries..." />
+          </div>
+          <select id="typeFilter" style="width:auto;">
+            <option value="">All types</option>
+            <option value="helb">HELB</option>
+            <option value="scholarship">Scholarship</option>
+            <option value="bursary">Bursary</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="grid grid-2" id="helbGrid">
+        <div class="loading-row" style="grid-column:1/-1;"><span class="spinner"></span> Loading updates...</div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<div id="toast-stack"></div>
+<script type="module" src="../js/theme.js"></script>
+<script type="module" src="../js/helb.js"></script>
+</body>
+</html>

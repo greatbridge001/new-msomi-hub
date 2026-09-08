@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Dashboard — Msomi Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../css/theme.css" />
+<link rel="stylesheet" href="../css/app.css" />
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js" defer></script>
+</head>
+<body>
+<div class="app-shell">
+  <div id="sidebarMount"></div>
+  <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+  <div class="main-col">
+    <div id="topbarMount"></div>
+
+    <main class="page-content">
+      <!-- Greeting hero -->
+      <div class="card card-pad mb-4" style="background:var(--brand-strong);color:#fff;position:relative;overflow:hidden;">
+        <div style="position:absolute;width:220px;height:220px;background:var(--gold-500);opacity:.18;border-radius:50%;filter:blur(60px);top:-80px;right:-40px;"></div>
+        <div style="position:relative;z-index:1;" class="grid grid-sidebar" id="greetingGrid">
+          <div>
+            <h2 id="greetingText" style="font-size:1.5rem;color:#fff;margin-bottom:.4rem;">Welcome back</h2>
+            <p id="greetingSub" style="color:var(--slate-300);">Loading your day...</p>
+            <div class="flex gap-3 mt-4" style="flex-wrap:wrap;">
+              <div class="badge" style="background:rgba(255,255,255,0.1);color:#fff;" id="verseBadge">
+                <i data-lucide="book-open" class="icon"></i> <span>Loading verse...</span>
+              </div>
+            </div>
+          </div>
+          <div class="card" style="background:rgba(255,255,255,0.06);border-color:rgba(255,255,255,0.12);padding:1.2rem;">
+            <div class="flex items-center gap-2 mb-2" style="color:var(--gold-300);"><i data-lucide="sparkles" class="icon"></i><strong class="text-sm">Daily Motivation</strong></div>
+            <p id="quoteText" class="text-sm" style="color:var(--slate-200);line-height:1.5;">Loading today's motivation...</p>
+            <p id="quoteAuthor" class="text-sm mt-2" style="color:var(--gold-300);font-weight:600;"></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex flex-col gap-4">
+        <div class="card card-pad">
+          <div class="page-header" style="margin-bottom:1rem;">
+            <div><h3 style="font-size:1.05rem;">Today's Timetable</h3><p class="text-sm text-secondary">Your classes for today</p></div>
+            <a href="timetable.html" class="btn btn-ghost btn-sm">Manage <i data-lucide="arrow-right" class="icon"></i></a>
+          </div>
+          <div id="todayTimetable"><div class="loading-row"><span class="spinner"></span> Loading...</div></div>
+        </div>
+
+        <div class="card card-pad">
+          <div class="page-header" style="margin-bottom:1rem;">
+            <div><h3 style="font-size:1.05rem;">Upcoming Reminders</h3><p class="text-sm text-secondary">CATs, assignments &amp; exams</p></div>
+            <a href="reminders.html" class="btn btn-ghost btn-sm">View all <i data-lucide="arrow-right" class="icon"></i></a>
+          </div>
+          <div id="upcomingReminders"><div class="loading-row"><span class="spinner"></span> Loading...</div></div>
+        </div>
+
+        <div class="card card-pad">
+          <div class="page-header" style="margin-bottom:1rem;">
+            <div><h3 style="font-size:1.05rem;">HELB &amp; Funding</h3></div>
+            <a href="helb.html" class="btn btn-ghost btn-sm">More <i data-lucide="arrow-right" class="icon"></i></a>
+          </div>
+          <div id="helbFeed"><div class="loading-row"><span class="spinner"></span> Loading...</div></div>
+        </div>
+
+        <div class="grid grid-2" style="gap:1rem;">
+          <div class="card stat-card card-hover">
+            <div class="stat-icon icon-tint-gold"><i data-lucide="graduation-cap" class="icon"></i></div>
+            <div class="stat-value" id="statGpa">—</div>
+            <div class="stat-label">Cumulative GPA</div>
+          </div>
+          <div class="card stat-card card-hover">
+            <div class="stat-icon icon-tint-navy"><i data-lucide="wallet" class="icon"></i></div>
+            <div class="stat-value" id="statBalance">—</div>
+            <div class="stat-label">Balance this month</div>
+          </div>
+        </div>
+
+        <div class="card card-pad">
+          <div class="page-header" style="margin-bottom:1rem;">
+            <div><h3 style="font-size:1.05rem;">Latest Internships &amp; Jobs</h3><p class="text-sm text-secondary">Fresh opportunities for you</p></div>
+            <a href="opportunities.html" class="btn btn-ghost btn-sm">See all <i data-lucide="arrow-right" class="icon"></i></a>
+          </div>
+          <div id="latestOpportunities"><div class="loading-row"><span class="spinner"></span> Loading...</div></div>
+        </div>
+
+        <div class="card card-pad">
+          <h3 style="font-size:1.05rem;margin-bottom:1rem;">Quick Actions</h3>
+          <div class="flex flex-col gap-2">
+            <a href="reminders.html" class="list-row" style="border:1px solid var(--border-subtle);">
+              <div class="stat-icon icon-tint-rose" style="width:36px;height:36px;margin:0;"><i data-lucide="plus-circle" class="icon"></i></div>
+              <span style="font-weight:600;font-size:.9rem;">Add a reminder</span>
+            </a>
+            <a href="budget.html" class="list-row" style="border:1px solid var(--border-subtle);">
+              <div class="stat-icon icon-tint-green" style="width:36px;height:36px;margin:0;"><i data-lucide="plus-circle" class="icon"></i></div>
+              <span style="font-weight:600;font-size:.9rem;">Log an expense</span>
+            </a>
+            <a href="toolkit.html" class="list-row" style="border:1px solid var(--border-subtle);">
+              <div class="stat-icon icon-tint-navy" style="width:36px;height:36px;margin:0;"><i data-lucide="sparkles" class="icon"></i></div>
+              <span style="font-weight:600;font-size:.9rem;">Open Student Toolkit</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="grid grid-2" style="gap:1rem;">
+          <div class="card card-pad" style="background:var(--yellow-100);">
+            <div class="flex items-center gap-2 mb-2"><i data-lucide="coffee" class="icon" style="color:var(--gold-600);"></i><strong class="text-sm">Enjoying Msomi Hub?</strong></div>
+            <p class="text-sm text-secondary mb-4">If this is helping you stay organised, consider buying a coffee to support the platform.</p>
+            <button class="btn btn-primary btn-sm btn-block" data-coffee-trigger><i data-lucide="coffee" class="icon"></i> Buy Me a Coffee</button>
+          </div>
+
+          <div class="card card-pad" style="background:var(--yellow-100);">
+            <div class="flex items-center gap-2 mb-2"><i data-lucide="gift" class="icon" style="color:var(--gold-600);"></i><strong class="text-sm">Invite friends</strong></div>
+            <p class="text-sm text-secondary mb-4">Share your referral link and help classmates get organised too.</p>
+            <a href="profile.html" class="btn btn-outline btn-sm btn-block">View my referral link</a>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<div id="toast-stack"></div>
+<script type="module" src="../js/theme.js"></script>
+<script type="module" src="../js/dashboard.js"></script>
+</body>
+</html>
