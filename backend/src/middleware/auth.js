@@ -1,18 +1,17 @@
-const jwt = require('jsonwebtoken');
 const { query } = require('../config/db');
+const { supabaseAdmin } = require('../config/supabaseAdmin');
 
-// Supabase signs every access token it issues with this project-level
-// secret (Dashboard -> Project Settings -> API -> JWT Settings -> JWT
-// Secret). Verifying locally means Express never has to make a network
-// call to Supabase just to check a token - the same speed win as before,
-// just against a token we no longer issue ourselves.
-const SECRET = process.env.SUPABASE_JWT_SECRET;
-
+// Supabase projects can sign access tokens with either the legacy HS256
+// shared secret or the newer asymmetric (ECC/RSA) signing keys - which one
+// is in effect can change after a key rotation. Verifying via
+// supabaseAdmin.auth.getUser() asks Supabase itself to check the token,
+// so it works correctly no matter which key type signed it - no shared
+// secret to keep in sync.
 async function loadUser(token) {
-  if (!SECRET) throw new Error('SUPABASE_JWT_SECRET is not configured');
-  const decoded = jwt.verify(token, SECRET); // throws on invalid/expired
-  const { rows } = await query('SELECT is_admin FROM profiles WHERE id = $1', [decoded.sub]);
-  return { id: decoded.sub, email: decoded.email, isAdmin: !!rows[0]?.is_admin };
+  const { data, error } = await supabaseAdmin.auth.getUser(token);
+  if (error || !data?.user) throw new Error('Invalid or expired token');
+  const { rows } = await query('SELECT is_admin FROM profiles WHERE id = $1', [data.user.id]);
+  return { id: data.user.id, email: data.user.email, isAdmin: !!rows[0]?.is_admin };
 }
 
 /**
