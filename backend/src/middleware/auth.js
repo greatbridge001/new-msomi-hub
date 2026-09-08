@@ -9,7 +9,10 @@ const { supabaseAdmin } = require('../config/supabaseAdmin');
 // secret to keep in sync.
 async function loadUser(token) {
   const { data, error } = await supabaseAdmin.auth.getUser(token);
-  if (error || !data?.user) throw new Error('Invalid or expired token');
+  if (error || !data?.user) {
+    console.error('[auth] getUser failed:', error?.message || error);
+    throw new Error('Invalid or expired token');
+  }
   const { rows } = await query('SELECT is_admin FROM profiles WHERE id = $1', [data.user.id]);
   return { id: data.user.id, email: data.user.email, isAdmin: !!rows[0]?.is_admin };
 }
@@ -29,6 +32,7 @@ async function requireAuth(req, res, next) {
     req.user = await loadUser(token);
     return next();
   } catch (err) {
+    console.error('[auth] requireAuth rejected:', err.message);
     return res.status(401).json({ error: 'Invalid or expired token' });
   }
 }
