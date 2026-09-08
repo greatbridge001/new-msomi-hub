@@ -10,8 +10,7 @@
 // the exact same api.get/post/put/patch/del/postForm/putForm contract they
 // already call, just re-routes it under the hood.
 import { supabase } from './supabaseClient.js';
-
-const EXPRESS_API_BASE_URL = 'https://your-api-host.example.com/api';
+const EXPRESS_API_BASE_URL = 'https://merry-warmth-production-9029.up.railway.app/api';
 const EXPRESS_PREFIXES = ['/payments', '/coffee', '/admin/stats', '/admin/users', '/admin/transactions', '/admin/referral-leaderboard', '/pastpapers'];
 
 const TOKEN_KEY = 'studentflow_token';
