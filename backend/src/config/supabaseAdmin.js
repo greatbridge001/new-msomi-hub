@@ -3,6 +3,8 @@ const { createClient } = require('@supabase/supabase-js');
 if (!process.env.SUPABASE_URL || !process.env.SUPABASE_SERVICE_ROLE_KEY) {
   console.warn('[supabaseAdmin] WARNING: SUPABASE_URL / SUPABASE_SERVICE_ROLE_KEY not set.');
 }
+console.log('[supabaseAdmin] SUPABASE_URL is:', JSON.stringify(process.env.SUPABASE_URL));
+console.log('[supabaseAdmin] SERVICE_ROLE_KEY length:', (process.env.SUPABASE_SERVICE_ROLE_KEY || '').length);
 
 // Service-role client - bypasses Row Level Security entirely. Only ever
 // used server-side (never sent to the frontend) for: uploading past papers
