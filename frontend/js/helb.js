@@ -1,4 +1,4 @@
-import { api, getWithCache, requireAuthOrRedirect, requireSubscriptionOrRedirect } from './api.js';
+import { api, getWithCache, requireAuthOrRedirect } from './api.js';
 import { initIcons, toast, timeAgo } from './ui.js';
 import { initShell } from './shell.js';
 import { loadBookmarks, isBookmarked, toggleBookmark } from './bookmarks-store.js';
@@ -62,8 +62,6 @@ function render(items) {
 async function fetchAndRender() {
   const isDefaultView = !searchInput.value.trim() && !typeFilter.value;
 
-  // Only the default (no search/filter) view is worth caching - search
-  // results are too specific to be useful as an "instant paint" guess.
   if (isDefaultView) {
     await getWithCache('/helb', 'helb_default', {
       onCache: (resp) => render(resp.data),
@@ -96,9 +94,5 @@ searchInput.addEventListener('input', () => {
 typeFilter.addEventListener('change', fetchAndRender);
 
 (async () => {
-  // Paint content immediately from cache via fetchAndRender/loadBookmarks
-  // running in parallel, instead of waiting on the subscription check first.
-  // The check still runs and still redirects to the paywall if needed - it
-  // just no longer blocks the page from showing content right away.
-  await Promise.all([requireSubscriptionOrRedirect(), loadBookmarks(), fetchAndRender()]);
+  await Promise.all([loadBookmarks(), fetchAndRender()]);
 })();

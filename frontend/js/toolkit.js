@@ -1,4 +1,4 @@
-import { requireAuthOrRedirect, requireSubscriptionOrRedirect } from './api.js';
+import { requireAuthOrRedirect } from './api.js';
 import { initShell } from './shell.js';
 
 requireAuthOrRedirect();
@@ -12,5 +12,3 @@ const TIPS = [
   'Track every shilling for one month. Most students are surprised where their allowance actually goes.'
 ];
 document.getElementById('toolkitTip').textContent = TIPS[Math.floor(Math.random() * TIPS.length)];
-
-requireSubscriptionOrRedirect();

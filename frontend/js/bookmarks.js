@@ -1,4 +1,4 @@
-import { api, getCached, setCached, requireAuthOrRedirect, requireSubscriptionOrRedirect } from './api.js';
+import { api, getCached, setCached, requireAuthOrRedirect } from './api.js';
 import { initIcons, toast, timeAgo } from './ui.js';
 import { initShell } from './shell.js';
 
@@ -68,13 +68,6 @@ document.querySelectorAll('#filterTabs [data-type]').forEach((btn) => {
   });
 });
 
-/**
- * Instant paint: this page needs one call per bookmarked item to resolve
- * the full item details, which is too slow to do on every load without
- * showing something first. So we render the last-known resolved list from
- * cache immediately, then re-resolve everything quietly in the background
- * and swap in the fresh version once it's ready.
- */
 async function loadSaved() {
   const cached = getCached('bookmarks_resolved');
   if (cached) { allSaved = cached; render(); }
@@ -87,7 +80,7 @@ async function loadSaved() {
           const { data: item } = await api.get(`${TYPE_ENDPOINT[b.item_type]}/${b.item_id}`);
           return { bookmarkId: b.id, item_type: b.item_type, item };
         } catch {
-          return null; // item may have been deleted by admin since bookmarking
+          return null;
         }
       })
     );
@@ -103,8 +96,5 @@ async function loadSaved() {
 }
 
 (async () => {
-  // Run the subscription check alongside the data fetch instead of blocking
-  // on it first - saves a full round trip on every page load. /bookmarks
-  // still enforces the subscription check server-side either way.
-  await Promise.all([requireSubscriptionOrRedirect(), loadSaved()]);
+  await loadSaved();
 })();

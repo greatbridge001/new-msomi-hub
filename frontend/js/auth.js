@@ -41,9 +41,6 @@ if (loginForm) {
       const { token, user } = await api.post('/auth/login', { email, password }, { auth: false });
       setSession(token, user);
 
-      // Warm the dashboard cache right now, in parallel with the toast
-      // delay below, so by the time dashboard.html opens there's already
-      // fresh data sitting in localStorage for it to paint instantly.
       api.get('/dashboard').then((dash) => setCached('dashboard', dash)).catch(() => {});
 
       toast('Welcome back! Redirecting...', 'success', 1500);
@@ -94,23 +91,8 @@ if (registerForm) {
       const { token, user } = await api.post('/auth/register', payload, { auth: false });
       setSession(token, user);
 
-      // Free mode / admin bypass / already-active accounts should go straight
-      // to the dashboard instead of being shown the payment page.
-      let needsPayment = true;
-      try {
-        const sub = await api.get('/payments/subscription');
-        needsPayment = sub.status !== 'active';
-      } catch {
-        // If the check fails, fall back to the old behaviour (show subscribe page).
-      }
-
-      if (needsPayment) {
-        toast('Account created! Let\'s get you subscribed.', 'success', 1500);
-        setTimeout(() => (window.location.href = 'subscribe.html'), 500);
-      } else {
-        toast('Account created! Redirecting to your dashboard...', 'success', 1500);
-        setTimeout(() => (window.location.href = 'dashboard.html'), 500);
-      }
+      toast('Account created! Redirecting to your dashboard...', 'success', 1500);
+      setTimeout(() => (window.location.href = 'dashboard.html'), 500);
     } catch (err) {
       toast(err.message || 'Registration failed', 'error');
       setLoading(submitBtn, false, originalLabel);
