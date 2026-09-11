@@ -1,20 +1,18 @@
 const { query } = require('../config/db');
 const { supabaseAdmin } = require('../config/supabaseAdmin');
 
-// Supabase projects can sign access tokens with either the legacy HS256
-// shared secret or the newer asymmetric (ECC/RSA) signing keys - which one
-// is in effect can change after a key rotation. Verifying via
-// supabaseAdmin.auth.getUser() asks Supabase itself to check the token,
-// so it works correctly no matter which key type signed it - no shared
-// secret to keep in sync.
+// Verifying against the Auth server (supabase.auth.getUser) instead of
+// checking the signature locally with a shared secret - this is
+// Supabase's own current recommendation, and it sidesteps an entire class
+// of config bugs (wrong/missing secret, or a project that's since rotated
+// to their newer asymmetric signing keys, which a locally-checked HS256
+// secret can't verify at all). Slightly slower per request since it's a
+// network round-trip, but correctness first - this app's traffic doesn't
+// come close to where that matters.
 async function loadUser(token) {
   const { data, error } = await supabaseAdmin.auth.getUser(token);
-  if (error || !data?.user) {
-    console.error('[auth] getUser failed:', error?.message || error);
-    const e = new Error('Invalid or expired token');
-    e.detail = error?.message || String(error);
-    throw e;
-  }
+  if (error || !data?.user) throw new Error(error?.message || 'No user for this token');
+
   const { rows } = await query('SELECT is_admin FROM profiles WHERE id = $1', [data.user.id]);
   return { id: data.user.id, email: data.user.email, isAdmin: !!rows[0]?.is_admin };
 }
@@ -27,6 +25,7 @@ async function requireAuth(req, res, next) {
   const [scheme, token] = header.split(' ');
 
   if (scheme !== 'Bearer' || !token) {
+    console.error('[requireAuth] missing or malformed Authorization header:', header ? header.slice(0, 20) + '...' : '(empty)');
     return res.status(401).json({ error: 'Missing or malformed Authorization header' });
   }
 
@@ -34,8 +33,8 @@ async function requireAuth(req, res, next) {
     req.user = await loadUser(token);
     return next();
   } catch (err) {
-    console.error('[auth] requireAuth rejected:', err.message);
-    return res.status(401).json({ error: 'Invalid or expired token', detail: err.detail || err.message || null });
+    console.error('[requireAuth] token check failed:', err.message);
+    return res.status(401).json({ error: 'Invalid or expired token' });
   }
 }
 
