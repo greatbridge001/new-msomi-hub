@@ -13,10 +13,10 @@ const PHRASES = [
   'daily motivation'
 ];
 
-const TYPE_MS = 55;
-const DELETE_MS = 32;
-const HOLD_FULL_MS = 1400;
-const HOLD_EMPTY_MS = 300;
+const TYPE_MS = 110;
+const DELETE_MS = 60;
+const HOLD_FULL_MS = 2200;
+const HOLD_EMPTY_MS = 500;
 
 export function initHeroDemo(rootId = 'heroTypewriter') {
   const root = document.getElementById(rootId);

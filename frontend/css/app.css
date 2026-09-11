@@ -250,7 +250,9 @@ table.data-table { width: 100%; border-collapse: collapse; }
 
 /* Inline rotating text in the hero lead sentence — the page's one
    deliberate interactive moment, in place of a separate demo panel. */
-.type-cycle { display: inline-flex; align-items: baseline; font-weight: 700; color: var(--text-primary); }
+.hero .lead { display: flex; flex-direction: column; gap: 0.3em; }
+.lead-static { display: block; }
+.type-cycle { display: flex; align-items: baseline; font-weight: 700; color: var(--accent-strong); min-height: 1.3em; }
 .type-cycle-cursor { display: inline-block; width: 2px; height: 1em; margin-left: 2px; background: var(--accent-strong); animation: demo-blink 0.9s step-end infinite; }
 @keyframes demo-blink { 50% { opacity: 0; } }
 @media (prefers-reduced-motion: reduce) { .type-cycle-cursor { animation: none; } }
