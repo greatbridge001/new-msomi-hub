@@ -35,7 +35,7 @@ async function requireAuth(req, res, next) {
     return next();
   } catch (err) {
     console.error('[auth] requireAuth rejected:', err.message);
-    return res.status(401).json({ error: 'Invalid or expired token', detail: err.detail || null });
+    return res.status(401).json({ error: 'Invalid or expired token', detail: err.detail || err.message || null });
   }
 }
 
