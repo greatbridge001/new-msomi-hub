@@ -4,18 +4,19 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Msomi Hub — Your Daily Student Success Companion</title>
-<meta name="description" content="Msomi Hub helps Kenyan university students manage timetables, GPA, budgets, HELB updates, opportunities and more — all in one beautifully simple place." />
+<meta name="description" content="Msomi Hub helps Kenyan university students manage timetables, GPA, budgets, HELB updates, opportunities and more, all in one simple place." />
 <link rel="manifest" href="manifest.json" />
 <meta name="theme-color" content="#0d0d0d" />
 <link rel="icon" type="image/png" href="photo/logo-icon.png" />
 <link rel="apple-touch-icon" href="photo/logo-icon.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="css/theme.css" />
 <link rel="stylesheet" href="css/app.css" />
+<link rel="stylesheet" href="css/landing.css" />
 <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js" defer></script>
 </head>
-<body>
+<body class="landing">
 <div id="splashScreen" class="splash-screen" aria-hidden="true">
   <img src="photo/logo-icon.png" alt="" class="splash-logo" />
 </div>
@@ -27,7 +28,7 @@
       Msomi Hub
     </a>
     <div class="nav-links">
-      <a href="#features">Features</a>
+      <a href="#features">Services</a>
       <a href="#how-it-works">How it works</a>
       <a href="#testimonials">Stories</a>
     </div>
@@ -47,7 +48,7 @@
     <button class="icon-btn" id="closeMobileNav">Close</button>
   </div>
   <div class="flex flex-col gap-4" style="font-size:1.2rem;font-weight:600;">
-    <a href="#features">Features</a>
+    <a href="#features">Services</a>
     <a href="#how-it-works">How it works</a>
     <a href="#testimonials">Stories</a>
     <div class="divider"></div>
@@ -63,13 +64,9 @@
   <div class="hero-blob b2"></div>
   <div class="container hero-grid">
     <div class="reveal in-view">
-      <span class="hero-eyebrow">Built for Kenyan university students</span>
+      <span class="hero-eyebrow"><span class="eyebrow-dot"></span> Built for Kenyan university students</span>
       <h1>Everything a student needs to stay ahead, in <span class="accent-text">one daily hub</span>.</h1>
-      <p class="lead">
-        <span class="lead-static">Msomi Hub keeps you on top of</span>
-        <span class="type-cycle" id="heroTypewriter"><span class="type-cycle-text"></span><span class="type-cycle-cursor"></span></span>
-        <span class="lead-static">— so you never miss what matters, one login at a time.</span>
-      </p>
+      <p class="lead">Msomi Hub brings your timetable, GPA, budget and campus updates into a single daily dashboard, so you always know what needs your attention.</p>
       <div class="hero-actions">
         <a href="pages/register.html" class="btn btn-primary btn-lg">Create Free Account</a>
         <a href="#features" class="btn btn-outline btn-lg">See what's inside</a>
@@ -104,59 +101,46 @@
   </div>
 </div>
 
-<!-- FEATURES -->
+<!-- SERVICES -->
 <section class="section" id="features">
   <div class="container">
     <div class="section-head reveal">
       <span class="eyebrow">Everything in one place</span>
-      <h2>A full student toolkit, not just another app</h2>
-      <p>Built around what you actually check daily — from money and marks to opportunities and motivation.</p>
+      <h2>A complete student toolkit</h2>
+      <p>Built around what you actually check daily.</p>
     </div>
-    <div class="grid grid-3">
-      <div class="card feature-card card-hover reveal">
-        <span class="f-mark"></span>
-        <h3>Smart Study Timetable</h3>
-        <p>Build your weekly class schedule and see exactly what's next, right on your dashboard every morning.</p>
+    <div class="service-card reveal">
+      <div class="service-row">
+        <span class="service-num">01</span>
+        <div><h3>Weekly Timetable</h3><p>Build your class schedule and see exactly what's next.</p></div>
       </div>
-      <div class="card feature-card card-hover reveal">
-        <span class="f-mark"></span>
-        <h3>CAT &amp; Exam Reminders</h3>
-        <p>Never walk into a CAT unprepared. Set reminders for assignments, CATs and exams with countdowns.</p>
+      <div class="service-row">
+        <span class="service-num">02</span>
+        <div><h3>CAT and Exam Reminders</h3><p>Countdown reminders for assignments, CATs and exams.</p></div>
       </div>
-      <div class="card feature-card card-hover reveal">
-        <span class="f-mark"></span>
-        <h3>Revision Past Papers</h3>
-        <p>Search and download past papers by unit, so revision starts with the right material, not a scramble.</p>
+      <div class="service-row">
+        <span class="service-num">03</span>
+        <div><h3>Revision Past Papers</h3><p>Search and download past papers by unit.</p></div>
       </div>
-      <div class="card feature-card card-hover reveal">
-        <span class="f-mark"></span>
-        <h3>GPA Calculator</h3>
-        <p>Log your units and grades each semester and watch your cumulative GPA calculate itself automatically.</p>
+      <div class="service-row">
+        <span class="service-num">04</span>
+        <div><h3>GPA Calculator</h3><p>Log your units and grades; your cumulative GPA updates automatically.</p></div>
       </div>
-      <div class="card feature-card card-hover reveal">
-        <span class="f-mark"></span>
-        <h3>Campus Budget Tracker</h3>
-        <p>Track HELB disbursements, allowance, and spending by category so your money lasts the full semester.</p>
+      <div class="service-row">
+        <span class="service-num">05</span>
+        <div><h3>Campus Budget Tracker</h3><p>Track HELB disbursements, allowance and spending by category.</p></div>
       </div>
-      <div class="card feature-card card-hover reveal">
-        <span class="f-mark"></span>
-        <h3>HELB &amp; Funding Updates</h3>
-        <p>Curated, up-to-date HELB, scholarship and bursary updates — no more digging through confusing portals.</p>
+      <div class="service-row">
+        <span class="service-num">06</span>
+        <div><h3>HELB and Scholarship Updates</h3><p>Curated, current funding updates without the confusing portals.</p></div>
       </div>
-      <div class="card feature-card card-hover reveal">
-        <span class="f-mark"></span>
-        <h3>Internships &amp; Opportunities</h3>
-        <p>Attachments, graduate trainee programmes, online gigs and competitions, updated regularly by our team.</p>
+      <div class="service-row">
+        <span class="service-num">07</span>
+        <div><h3>Internships and Opportunities</h3><p>Attachments, trainee programmes, online gigs and competitions.</p></div>
       </div>
-      <div class="card feature-card card-hover reveal">
-        <span class="f-mark"></span>
-        <h3>Save for Later</h3>
-        <p>Bookmark any announcement, HELB update or opportunity so it's easy to find again when you need it.</p>
-      </div>
-      <div class="card feature-card card-hover reveal">
-        <span class="f-mark"></span>
-        <h3>Daily Motivation</h3>
-        <p>A fresh scripture and motivational quote every day to keep discipline and faith part of your routine.</p>
+      <div class="service-row">
+        <span class="service-num">08</span>
+        <div><h3>Daily Motivation</h3><p>A fresh scripture and motivational quote every day.</p></div>
       </div>
     </div>
   </div>
@@ -179,7 +163,7 @@
       <div class="step-item">
         <div class="step-num">2</div>
         <h4>Set up your basics</h4>
-        <p>Add your timetable, units and budget — it only takes a few minutes.</p>
+        <p>Add your timetable, units and budget. It only takes a few minutes.</p>
       </div>
       <div class="step-item">
         <div class="step-num">3</div>
@@ -236,7 +220,7 @@
           <span class="logo-mark"><img src="photo/logo-icon.png" alt="Msomi Hub logo" /></span> Msomi Hub
         </a>
         <p style="font-size:.88rem;color:var(--slate-400);max-width:280px;margin-bottom:1.2rem;">
-          The daily companion for Kenyan university students — timetables, money, marks and opportunities in one home.
+          The daily companion for Kenyan university students: timetables, money, marks and opportunities in one home.
         </p>
         <div class="social-row">
           <a href="https://twitter.com" target="_blank" rel="noopener">Twitter</a>
@@ -246,7 +230,7 @@
       </div>
       <div>
         <h5>Product</h5>
-        <a href="#features">Features</a>
+        <a href="#features">Services</a>
           <a href="#how-it-works">How it works</a>
       </div>
       <div>
@@ -287,7 +271,6 @@
   })();
 </script>
 <script type="module" src="js/theme.js"></script>
-<script type="module" src="js/hero-demo.js"></script>
 <script type="module" src="js/main.js"></script>
 </body>
 </html>
